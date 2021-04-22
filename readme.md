@@ -252,16 +252,16 @@ gives
 
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/jarrvis/lazy-fetch)
 
-`lazy-fetch` is a web component to make lazy API calls. Request is done after component is scrolled into viewport. You can set url, headers, http method and body over component params. Response will be given over events: either `resolved` or `error`. Take a look at [API](https://github.com/jarrvis/st-lazy/tree/master/src/components/lazy-fetch). You can also check [stencil-fetch](https://github.com/Fdom92/stencil-fetch) as `lazy-fetch` is based on it. 
+`lazy-fetch` is a web component to make lazy API calls. Request is done after component is scrolled into viewport. You can set url, headers, http method and body over component params. Response will be given over events: either `resolved` or `error`. Take a look at [API](https://github.com/jarrvis/st-lazy/tree/master/src/components/lazy-fetch). You can also check [stencil-fetch](https://github.com/Fdom92/stencil-fetch) as `lazy-fetch` is based on it.
 
 
 ## Example
 ```html
 <body>
-    <div style="height: 1000px"></div>
-    <lazy-fetch
+<div style="height: 1000px"></div>
+<lazy-fetch
         url="https://jsonplaceholder.typicode.com/users/1">
-    </lazy-fetch>
+</lazy-fetch>
 </body>
 ```
 
@@ -274,8 +274,22 @@ gives
 In html you can use `header-?` attribute
 ```html
   <lazy-fetch
-    url="https://jsonplaceholder.typicode.com/users/1"
-    header-keyid='authorization key'
-    >
-  </lazy-fetch>
+        url="https://jsonplaceholder.typicode.com/users/1"
+        header-keyid='authorization key'
+>
+</lazy-fetch>
+```
+
+# 4. lazy-html
+
+`lazy-fetch` is a web component to make lazy HTML content calls. Request is done after component is scrolled into viewport.
+
+## Example
+```html
+<body>
+    <div style="height: 1000px"></div>
+    <lazy-html
+        url="https://jsonplaceholder.typicode.com/users/1">
+    </lazy-html>
+</body>
 ```
