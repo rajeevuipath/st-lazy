@@ -1,7 +1,7 @@
 /**
  * Call this function as soon as the element is inside the viewport.
  * @param hostProperty Optionally provide the name of the `@Element()` property. Alternatively add `@LazyHost()`.
- * @param margin Optionally provide the padding (rootMargin) for IntersectionObserver. Determines how far from the viewport lazy loading starts. Can have values similar to the CSS margin property, e.g. "10px 20px 30px 40px" (top, right, bottom, left). The values can be percentages 
+ * @param margin Optionally provide the padding (rootMargin) for IntersectionObserver. Determines how far from the viewport lazy loading starts. Can have values similar to the CSS margin property, e.g. "10px 20px 30px 40px" (top, right, bottom, left). The values can be percentages
  * @example
 ```
 @LazyHost() @Element() host;
@@ -45,6 +45,10 @@ export function Lazy(options?: LazyOptions) {
       options.margin = proto["__lazyMargin"];
     }
 
+    if (proto["__lazyVisibility"]) {
+      options.visibility = proto["__lazyVisibility"];
+    }
+
     const { componentDidLoad } = proto;
     proto.componentDidLoad = function() {
       if ("IntersectionObserver" in window) {
@@ -57,10 +61,20 @@ export function Lazy(options?: LazyOptions) {
         let io = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                this[prop].apply(this);
-                io.disconnect();
-                io = null;
+              if (!options.visibility) {
+                if (entry.isIntersecting) {
+                  this[prop].apply(this);
+                  io.disconnect();
+                  io = null;
+                }
+              } else if (options.visibility === "in") {
+                if (entry.isIntersecting) {
+                  this[prop].apply(this);
+                }
+              } else if (options.visibility === "out") {
+                if (!entry.isIntersecting) {
+                  this[prop].apply(this);
+                }
               }
             });
           },
@@ -108,4 +122,5 @@ export function getValidMargin(margin): string {
 export interface LazyOptions {
   hostProperty?: string;
   margin?: string;
+  visibility?: "in"|"out";
 }
