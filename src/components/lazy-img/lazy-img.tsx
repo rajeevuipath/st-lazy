@@ -25,6 +25,11 @@ export class LazyImg {
     @Prop() fallbackSrc: string;
 
     /**
+     * Source url of image to be shown before lazy load
+     */
+    @Prop() placeholderSrc: string;
+
+    /**
      * Determines how far from the viewport lazy loading starts.
      * Can have values similar to the CSS margin property, e.g. "10px 20px 30px 40px" (top, right, bottom, left). 
      * The values can be percentages
@@ -49,8 +54,9 @@ export class LazyImg {
 
     render() {
         return (
-            <img data-src={this.src} 
-                 alt={this.alt} 
+            <img src={this.placeholderSrc}
+                 data-src={this.src}
+                 alt={this.alt}
                  onError={() => this.imgEl.src = this.fallbackSrc } 
                  ref={imgEl => this.imgEl = imgEl }>
             </img>
