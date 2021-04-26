@@ -7,7 +7,9 @@ export const config: Config = {
     { type: 'docs' },
     {
       type: 'www',
-      serviceWorker: null 
+      serviceWorker: null,
+      buildDir: 'js',
+      resourcesUrl: '/js/stlazy'
     }
   ],
   //globalScript: "src/utils/utils.ts",
