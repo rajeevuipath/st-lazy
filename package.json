@@ -1,5 +1,5 @@
 {
-  "name": "st-lazy",
+  "name": "@rajeevuipath/st-lazy",
   "version": "2.1.2",
   "description": "Web components for lazy loading - you can use them everywhere, without any dependency. Contains also @Lazy decorator for Stenciljs to call annotated method when component is scrolled to viewport. Web components are based on @Lazy",
   "module": "dist/esm/index.js",
@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jarrvis/st-lazy"
+    "url": "git+https://github.com/rajeevuipath/st-lazy"
   },
   "keywords": [
     "Stencil",
@@ -39,7 +39,7 @@
   "author": "Michał Kaliszewski",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jarrvis/st-lazy"
+    "url": "https://github.com/rajeevuipath/st-lazy"
   },
-  "homepage": "https://github.com/jarrvis/st-lazy"
+  "homepage": "https://github.com/rajeevuipath/st-lazy"
 }
